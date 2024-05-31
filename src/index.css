@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=REM:ital,wght@0,100..900;1,100..900&family=Reddit+Mono:wght@200..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Outfit', sans-serif;
+}
+
+/*REM, Outfit, Quicksand, Reddit Mono*/
+
+.max-lenght {
+  animation: ping 0.5s infinite;
+}
+
+.max-lenght::after {
+  content: '';
+  position: absolute;
+  top: 27px;
+  left: 100px;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  clip-path: polygon(100% 0, 0 0, 50% 100%);
+}
+
+@keyframes ping {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
