@@ -36,3 +36,24 @@ body {
     transform: rotate(-2deg);
   }
 }
+
+.show-date {
+  position: relative;
+}
+
+.show-date::after {
+  content: '';
+  position: absolute;
+  top: 13.5px;
+  /* right: -16px; */
+  right: -18px;
+  height: 25px;
+  width: 25px;
+  background-color: #075985;
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+  box-shadow: 0 2px 15px rgba(3, 15, 38, 0.1);
+}
+
+.box-shadow {
+  box-shadow: 0 2px 15px rgba(3, 15, 38, 0.1);
+}

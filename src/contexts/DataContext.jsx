@@ -4,15 +4,22 @@ import Error from '../components/Error';
 import MainLayout from '../components/layout/MainLayout';
 
 const DataContext = createContext();
+const LoadingContext = createContext();
 
 export function DataProvider({ children }) {
-  const [allTask, setAllTask] = useState([]);
+  const [allTasks, setAllTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState();
   const [isError, setIsError] = useState();
   useEffect(() => {
+    setIsLoading(true);
     async function getTasks() {
       try {
-        let { data } = await supabase.from('tasks').select('*');
-        setAllTask(data);
+        let { data } = await supabase
+          .from('tasks')
+          .select('*')
+          .order('created_at');
+        setAllTasks(data);
+        setIsLoading(false);
         setIsError(false);
         console.log('Successfully fetched data from supabase ');
       } catch (e) {
@@ -33,10 +40,13 @@ export function DataProvider({ children }) {
     );
 
   return (
-    <DataContext.Provider value={{ allTask, setAllTask }}>
-      {children}
+    <DataContext.Provider value={{ allTasks, setAllTasks }}>
+      <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+        {children}
+      </LoadingContext.Provider>
     </DataContext.Provider>
   );
 }
 
 export const useData = () => useContext(DataContext);
+export const useLoading = () => useContext(LoadingContext);
