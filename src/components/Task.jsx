@@ -1,21 +1,18 @@
-import { IoIosCloseCircle } from 'react-icons/io';
+import PropTypes from 'prop-types';
 import supabase from '../services/supabase';
-import { useData } from '../contexts/DataContext';
 import { useState } from 'react';
+import { useData } from '../contexts/DataContext';
 import Date from './Date';
 import Star from './Star';
+import { IoIosCloseCircle } from 'react-icons/io';
 
-export default function Task({ task, index, length }) {
+export default function Task({ task, length, index }) {
   const { allTasks, setAllTasks } = useData();
   const [showDate, setShowDate] = useState(false);
 
   async function handleDelete() {
     try {
-      const { data } = await supabase
-        .from('tasks')
-        .delete()
-        .eq('id', task.id)
-        .select();
+      await supabase.from('tasks').delete().eq('id', task.id);
       setAllTasks(allTasks.filter(el => el.id !== task.id));
     } catch (e) {
       console.log('There was an error in deleting the task. Message: ' + e);
@@ -33,8 +30,8 @@ export default function Task({ task, index, length }) {
       <li
         className="flex flex-1"
         onMouseEnter={() => setShowDate(true)}
-        onClick={() => setShowDate(true)}
         onMouseLeave={() => setShowDate(false)}
+        onClick={() => setShowDate(true)}
       >
         <span className="box-shadow flex w-14 items-center justify-center rounded-l-full bg-white text-2xl font-semibold text-sky-500">
           {length - index}
@@ -53,3 +50,8 @@ export default function Task({ task, index, length }) {
     </div>
   );
 }
+Task.propTypes = {
+  task: PropTypes.object,
+  length: PropTypes.number,
+  index: PropTypes.number,
+};

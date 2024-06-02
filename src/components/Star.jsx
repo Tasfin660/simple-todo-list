@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { FaRegStar, FaStar } from 'react-icons/fa';
-import { useData } from '../contexts/DataContext';
 import supabase from '../services/supabase';
+import { useData } from '../contexts/DataContext';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 
 export default function Star({ task }) {
-  const { allTasks, setAllTasks } = useData();
+  const { setAllTasks } = useData();
   const [isStarred, setIsStarred] = useState(task.starred);
   const [loading, setLoading] = useState(false);
 
@@ -41,3 +42,9 @@ export default function Star({ task }) {
     </button>
   );
 }
+Star.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.number,
+    starred: PropTypes.bool,
+  }),
+};

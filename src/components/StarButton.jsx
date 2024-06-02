@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function StarButton({ starredTasks, onStarredTasks }) {
   return (
     <button
@@ -8,3 +10,8 @@ export default function StarButton({ starredTasks, onStarredTasks }) {
     </button>
   );
 }
+
+StarButton.propTypes = {
+  starredTasks: PropTypes.bool,
+  onStarredTasks: PropTypes.func,
+};

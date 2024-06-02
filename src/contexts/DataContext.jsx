@@ -1,7 +1,8 @@
-import { useState, useEffect, useContext, createContext } from 'react';
+import PropTypes from 'prop-types';
 import supabase from '../services/supabase';
-import Error from '../components/Error';
+import { useState, useEffect, useContext, createContext } from 'react';
 import MainLayout from '../components/layout/MainLayout';
+import Error from '../components/Error';
 
 const DataContext = createContext();
 const LoadingContext = createContext();
@@ -10,6 +11,7 @@ export function DataProvider({ children }) {
   const [allTasks, setAllTasks] = useState([]);
   const [isLoading, setIsLoading] = useState();
   const [isError, setIsError] = useState();
+
   useEffect(() => {
     setIsLoading(true);
     async function getTasks() {
@@ -21,7 +23,7 @@ export function DataProvider({ children }) {
         setAllTasks(data);
         setIsLoading(false);
         setIsError(false);
-        console.log('Successfully fetched data from supabase ');
+        console.log('Successfully fetched data from supabase');
       } catch (e) {
         setIsError(true);
         console.log(
@@ -50,3 +52,7 @@ export function DataProvider({ children }) {
 
 export const useData = () => useContext(DataContext);
 export const useLoading = () => useContext(LoadingContext);
+
+DataProvider.propTypes = {
+  children: PropTypes.node,
+};

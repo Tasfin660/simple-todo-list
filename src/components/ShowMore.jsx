@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoIosArrowUp } from 'react-icons/io';
 
@@ -28,3 +29,6 @@ export default function ShowMore({ handleMaxOutput }) {
     </button>
   );
 }
+ShowMore.propTypes = {
+  handleMaxOutput: PropTypes.func,
+};

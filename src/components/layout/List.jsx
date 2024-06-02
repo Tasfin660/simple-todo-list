@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useData, useLoading } from '../../contexts/DataContext';
+import { useLoading } from '../../contexts/DataContext';
+import Task from '../Task';
 import Loading from '../Loading';
 import ShowMore from '../ShowMore';
-import Task from '../Task';
 
 export default function List({ filteredTasks }) {
-  const { allTasks } = useData();
   const { isLoading } = useLoading();
   const [maxOutput, setMaxOutput] = useState(5);
   const containerRef = useRef(null);
@@ -43,3 +43,6 @@ export default function List({ filteredTasks }) {
     </div>
   );
 }
+List.propTypes = {
+  filteredTasks: PropTypes.array,
+};

@@ -21,6 +21,6 @@ export default function DateComponent({ time, showDate }) {
 }
 
 DateComponent.propTypes = {
-  time: PropTypes.string.isRequired,
-  showDate: PropTypes.bool.isRequired,
+  time: PropTypes.string,
+  showDate: PropTypes.bool,
 };
