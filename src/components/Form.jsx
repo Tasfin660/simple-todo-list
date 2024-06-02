@@ -47,7 +47,7 @@ export default function Form({ input, setInput, onInput }) {
         )}
       </div>
       <button
-        className="box-shadow rounded-r-full bg-sky-500 pl-3 pr-4 text-white transition duration-200 hover:bg-sky-600 disabled:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-700 max-[400px]:px-2 max-[400px]:text-sm"
+        className="box-shadow rounded-r-full bg-sky-500 pl-3 pr-4 text-white transition duration-200 hover:bg-sky-600 disabled:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-700 dark:disabled:hover:bg-sky-600 max-[400px]:px-2 max-[400px]:text-sm"
         disabled={input?.length < 1}
       >
         <span>ADD</span>
