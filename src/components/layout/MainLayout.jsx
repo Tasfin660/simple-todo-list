@@ -10,7 +10,7 @@ export default function MainLayout({ children }) {
   }
   return (
     <div className={`${isDark && 'dark'}`}>
-      <div className="transition-dark-mode bg-sky-50 grid min-h-screen grid-rows-[max-content,1fr,max-content] dark:bg-[#202124]">
+      <div className="transition-dark-mode grid min-h-screen grid-rows-[max-content,1fr,max-content] bg-sky-100 dark:bg-[#202124]">
         <Header isDark={isDark} onDarkMode={handleDarkMode} />
         {children}
         <Footer />
