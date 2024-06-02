@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container mx-auto grid grid-cols-[max-content,1fr,max-content] items-center justify-center px-6 py-4 text-white max-[768px]:grid-cols-[repeat(2,1fr)] max-[768px]:gap-y-6">
         <button onClick={() => window.location.reload()}>
           <img
-            src="/public/logo.png"
+            src="/logo.png"
             alt="website logo"
             className="block h-[18px] w-[18px]"
           />
