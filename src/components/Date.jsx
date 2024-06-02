@@ -9,11 +9,15 @@ export default function DateComponent({ time, showDate }) {
   }
 
   return (
-    <div className="basis-[120px]">
+    <div className="basis-[120px] max-[800px]:basis-[90px] max-[600px]:hidden">
       {showDate && time && (
-        <div className="show-date fontmedium box-shadow rounded-lg bg-sky-800 pb-2 pl-4 pt-1">
-          <p className="mb-[2px] text-sm text-green-400">Created At</p>
-          <p className="text-xs text-fuchsia-400">{formatDate(time)}</p>
+        <div className="show-date fontmedium box-shadow bg-sky-800 rounded-lg pb-2 pl-4 pt-1 max-[800px]:pb-1 max-[800px]:pl-2 max-[800px]:pt-0.5">
+          <p className="mb-[2px] text-sm text-green-400 max-[800px]:text-xs">
+            Created At
+          </p>
+          <p className="text-xs text-fuchsia-400 max-[800px]:text-[10px]">
+            {formatDate(time)}
+          </p>
         </div>
       )}
     </div>

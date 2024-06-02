@@ -34,7 +34,7 @@ export default function Star({ task }) {
 
   return (
     <button
-      className={`box-shadow -mt-1 box-content rounded-full bg-white p-3 text-lg text-sky-500 ${loading ? 'cursor-wait' : ''}`}
+      className={`box-shadow text-sky-500 dark:text-sky-600 -mt-1 box-content rounded-full bg-white p-3 text-lg max-[800px]:p-2 max-[800px]:text-base ${loading ? 'cursor-wait' : ''}`}
       onClick={handleStar}
       disabled={loading}
     >

@@ -8,7 +8,9 @@ body {
   font-family: 'Outfit', sans-serif;
 }
 
-/*REM, Outfit, Quicksand, Reddit Mono*/
+.transition-dark-mode {
+  @apply transition-colors duration-200;
+}
 
 .max-lenght {
   animation: ping 0.5s infinite;
@@ -52,7 +54,16 @@ body {
   clip-path: polygon(100% 50%, 0 0, 0 100%);
   box-shadow: 0 2px 15px rgba(3, 15, 38, 0.1);
 }
+@media only screen and (max-width: 800px) {
+  .show-date::after {
+    top: 12px;
+    right: -11px;
+    height: 15px;
+    width: 15px;
+  }
+}
 
+/**/
 .box-shadow {
   box-shadow: 0 2px 15px rgba(3, 15, 38, 0.1);
 }

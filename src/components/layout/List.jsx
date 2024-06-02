@@ -19,13 +19,13 @@ export default function List({ filteredTasks }) {
   }
 
   useEffect(() => {
-    containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [maxOutput]);
 
   if (isLoading) return <Loading />;
   return (
     <div className="flex flex-col items-center" ref={containerRef}>
-      <ul className="container mx-auto my-16 flex flex-col gap-10">
+      <ul className="container mx-auto my-16 flex flex-col gap-10 px-6">
         {reversedTasks
           .map((task, index) => (
             <Task

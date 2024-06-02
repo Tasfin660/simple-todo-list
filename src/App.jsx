@@ -7,6 +7,16 @@ import StarButton from './components/StarButton';
 import List from './components/layout/List';
 import suggs from './assets/suggs';
 
+let temp = null;
+function randGenerator() {
+  let rand = Math.floor(Math.random() * suggs.length);
+  while (rand === temp) {
+    rand = Math.floor(Math.random() * suggs.length);
+  }
+  temp = rand;
+  return suggs[rand];
+}
+
 export default function App() {
   const [input, setInput] = useState('');
   const { allTasks, setAllTasks } = useData();
@@ -32,8 +42,7 @@ export default function App() {
 
   function handleSuggestions() {
     setPause(true);
-    let rand = Math.floor(Math.random() * suggs.length);
-    let randomTask = suggs[rand];
+    let randomTask = randGenerator();
     setTimeout(() => {
       setInput(randomTask);
       setPause(false);
@@ -43,7 +52,7 @@ export default function App() {
   return (
     <MainLayout>
       <main>
-        <div className="mt-16 flex justify-center gap-8 pb-6">
+        <div className="mt-16 grid grid-cols-[repeat(3,max-content)] justify-center gap-8 pb-6 max-[1280px]:grid-cols-[repeat(2,max-content)] max-[600px]:gap-x-4 max-[500px]:mt-10 max-[400px]:grid-cols-[max-content]">
           <Suggestions pause={pause} onSuggestions={handleSuggestions} />
           <Form input={input} setInput={setInput} onInput={handleInput} />
           <StarButton
@@ -56,3 +65,4 @@ export default function App() {
     </MainLayout>
   );
 }
+// flex justify-center gap-8 max-[1280px]:flex-col max-[1280px]:items-center

@@ -17,7 +17,7 @@ export default function ShowMore({ handleMaxOutput }) {
   }
   return (
     <button
-      className={`box-shadow mb-16 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sky-500 duration-200 ${hoverClass}`}
+      className={`box-shadow mb-16 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sky-500 dark:text-sky-600 ${hoverClass} !duration-200`}
       onClick={handleShowMore}
     >
       {isFull ? (
