@@ -1,6 +1,6 @@
 export default function Error() {
   return (
-    <div className="container mx-auto my-16 flex justify-center">
+    <div className="container mx-auto my-16 flex justify-center max-[500px]:mt-6">
       <div className="h-max w-max rounded-md bg-yellow-400 p-4 shadow-md dark:bg-yellow-500 max-[500px]:p-3">
         <p className="mb-2 text-xl font-medium text-red-600 max-[600px]:text-lg max-[500px]:text-sm">
           Error: Couldn&apos;t Fetched Data
