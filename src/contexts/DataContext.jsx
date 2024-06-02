@@ -16,7 +16,6 @@ export function DataProvider({ children }) {
     setIsLoading(true);
     async function getTasks() {
       try {
-        throw new Error('hi');
         let { data } = await supabase
           .from('tasks')
           .select('*')
