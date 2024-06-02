@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useData } from './contexts/DataContext';
 import MainLayout from './components/layout/MainLayout';
 import Suggestions from './components/Suggestions';
@@ -8,7 +8,7 @@ import List from './components/layout/List';
 import suggs from './assets/suggs';
 
 let temp = null;
-function randGenerator() {
+function randTasksGenerator() {
   let rand = Math.floor(Math.random() * suggs.length);
   while (rand === temp) {
     rand = Math.floor(Math.random() * suggs.length);
@@ -23,8 +23,17 @@ export default function App() {
   const [starredTasks, setStarredTasks] = useState(false);
   const [filteredTasks, setFilteredTasks] = useState(allTasks);
   const [pause, setPause] = useState(false);
+  const allTasksArray = useRef();
+
+  function checkAllSuggsIncluded() {
+    allTasksArray.current = allTasks.map(el => el.task);
+    return suggs.every(sugg => allTasksArray.current.includes(sugg));
+  }
 
   useEffect(() => {
+    allTasksArray.current = allTasks.map(el => el.task);
+    const allSuggsIncluded = checkAllSuggsIncluded();
+    if (!allSuggsIncluded) setPause(false);
     if (starredTasks) {
       setFilteredTasks(allTasks.filter(el => el.starred === true));
     } else {
@@ -42,7 +51,16 @@ export default function App() {
 
   function handleSuggestions() {
     setPause(true);
-    let randomTask = randGenerator();
+    let randomTask = randTasksGenerator();
+
+    const allSuggsIncluded = checkAllSuggsIncluded();
+    if (allSuggsIncluded) {
+      return;
+    } else {
+      while (allTasks.some(el => el.task === randomTask)) {
+        randomTask = randTasksGenerator();
+      }
+    }
     setTimeout(() => {
       setInput(randomTask);
       setPause(false);
@@ -65,4 +83,3 @@ export default function App() {
     </MainLayout>
   );
 }
-// flex justify-center gap-8 max-[1280px]:flex-col max-[1280px]:items-center

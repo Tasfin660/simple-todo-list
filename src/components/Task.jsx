@@ -33,15 +33,16 @@ export default function Task({ task, length, index }) {
         onMouseLeave={() => setShowDate(false)}
         onClick={() => setShowDate(true)}
       >
-        <span className="box-shadow text-sky-500 dark:text-sky-600 max-[800px]:text-md flex w-14 items-center justify-center rounded-l-full bg-white text-2xl font-semibold max-[1020px]:text-lg max-[800px]:w-[40px] max-[500px]:w-[30px] max-[500px]:text-sm">
+        <span className="box-shadow max-[800px]:text-md flex w-14 items-center justify-center rounded-l-full bg-white text-2xl font-semibold text-sky-500 dark:text-sky-600 max-[1020px]:text-lg max-[800px]:w-[40px] max-[500px]:w-[30px] max-[500px]:text-sm">
           {length - index}
         </span>
-        <div className="box-shadow from-sky-500 dark:from-sky-600 flex flex-1 justify-between rounded-r-full bg-gradient-to-br to-blue-500 px-4 py-3 text-white dark:to-blue-600 max-[800px]:py-2 max-[500px]:pl-2">
-          <p className="text-xl max-[1020px]:text-base max-[800px]:text-sm max-[500px]:text-[12px] max-[400px]:text-[10px] max-[400px]:leading-4">
+        <div className="box-shadow flex flex-1 items-center justify-between rounded-r-full bg-gradient-to-br from-sky-500 to-blue-500 px-4 py-3 text-white dark:from-sky-600 dark:to-blue-600 max-[800px]:py-2 max-[500px]:pl-2">
+          <p className="pr-4 text-xl max-[1020px]:text-base max-[800px]:text-sm max-[500px]:text-[12px] max-[400px]:text-[10px] max-[400px]:leading-4">
             {task.task}
           </p>
+
           <button
-            className="pl-4 text-2xl duration-200 hover:rotate-90 max-[500px]:text-lg"
+            className="text-2xl duration-200 hover:rotate-90 max-[500px]:text-lg"
             onClick={handleDelete}
           >
             <IoIosCloseCircle />
